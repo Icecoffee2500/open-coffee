@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { FixedHeader } from './FixedHeader'; // Import the new FixedHeader component
 

@@ -1,6 +1,5 @@
-
-
-import React, { useState, ChangeEvent, useEffect } from 'react';
+import * as React from 'react';
+import { useState, ChangeEvent, useEffect } from 'react';
 import { PageLayout } from '../components/layout/PageLayout';
 import { Button } from '../components/core/Button';
 import { RecommendationRule, RoastLevel, FlavorProfile1, FlavorProfile2, Step2ButtonOptionsType, Step3ButtonOptionsType } from '../types';
@@ -212,7 +211,13 @@ const AdminPage: React.FC<AdminPageProps> = ({ rules, setRules, step1Options, st
                           </Button>
                         </div>
                       ) : (
-                        <Button onClick={() => handleEdit(rule)} size="sm" variant="neutral" className="flex items-center !px-2 !py-1 !text-xs sm:!px-2.5 sm:!py-1.5 sm:!text-sm rounded-none" aria-label={`Edit rule for ${rule.beanName}`}>
+                        <Button
+                          onClick={() => handleEdit(rule)}
+                          size="sm"
+                          variant="neutral"
+                          className="flex items-center !px-2 !py-1 !text-xs sm:!px-2.5 sm:!py-1.5 sm:!text-sm rounded-none"
+                          aria-label={`Edit rule for ${rule.beanName}`}
+                        >
                           <PencilIcon className="h-3 w-3 sm:h-4 sm:w-4 mr-0.5 sm:mr-1 text-gray-700" /> 수정
                         </Button>
                       )}

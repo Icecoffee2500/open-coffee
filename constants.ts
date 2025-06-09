@@ -21,7 +21,7 @@ export const INITIAL_RECOMMENDATION_RULES: RecommendationRule[] = [
   {
     id: 'ml-fruit', roastLevel: RoastLevel.MediumLight, flavor1: FlavorProfile1.Fruit,
     beanName: "에티오피아 구지 우라가 G1 내추럴", beanNameEn: "Ethiopia Guji Uraga G1 Natural",
-    description: "첫 향에서 느껴지는 라즈베리의 매력,\n이어지는 청사과와 라임의 상큼함,\n마지막에 맴도는 베리의 달콤한 여운"
+    description: "첫 향에서 느껴지는 라즈베리의 매력,\n이어지는 청사과와 라임의 상큼함,\n마지막에 맴도는 베리의 달큰한 여운"
   },
   {
     id: 'ml-flower', roastLevel: RoastLevel.MediumLight, flavor1: FlavorProfile1.Flower,
@@ -31,7 +31,7 @@ export const INITIAL_RECOMMENDATION_RULES: RecommendationRule[] = [
   {
     id: 'm-milkchoco', roastLevel: RoastLevel.Medium, flavor1: FlavorProfile1.MilkChoco,
     beanName: "Citrus Cacao", beanNameEn: "오픈 + 백현",
-    description: "꿀피차의 은은한 산미와\n카카오의 부드러운 쌉싸름함이 조화를 이루는 맛"
+    description: "귤피차의 은은한 산미와\n카카오의 부드러운 쌉싸름함이 조화를 이루는 맛"
   },
   {
     id: 'm-nut', roastLevel: RoastLevel.Medium, flavor1: FlavorProfile1.Nut,
@@ -51,7 +51,7 @@ export const INITIAL_RECOMMENDATION_RULES: RecommendationRule[] = [
   {
     id: 'm-fpf-infuse', roastLevel: RoastLevel.Medium, flavor1: FlavorProfile1.FPlusF, flavor2: FlavorProfile2.Infuse,
     beanName: "개화 (開花)", beanNameEn: "시즈널",
-    description: "오픈커피 로스터스의 봄 시그니처 블렌딩\n플라워, 피치, 스트로베리의 화사한 조화에\n트로피컬의 상큼함과 캔디 같은 달콤함이 어우러지는 블렌드"
+    description: "오픈커피 로스터스의 봄 시그니처 블렌딩\n플라워, 피치, 스트로베리의 화사한 조화에\n트로피컬의 상큼함과 캔디 같은 달콤함이 어우러지는 밸런스"
   },
   {
     id: 'm-fpf-balance', roastLevel: RoastLevel.Medium, flavor1: FlavorProfile1.FPlusF, flavor2: FlavorProfile2.Balance,

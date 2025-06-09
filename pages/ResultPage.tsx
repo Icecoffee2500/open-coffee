@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelections } from '../contexts/SelectionContext';
 import { PageLayout } from '../components/layout/PageLayout';
