@@ -36,6 +36,7 @@ const HomePage: React.FC = () => {
       mainTitle={mainTitleContent}
       description={descriptionContent}
       centerVertically={true}
+      displayLogoInHeader={true} // Added to show logo on HomePage
     >
       <div className="mt-8 sm:mt-10 md:mt-12 lg:mt-16 flex flex-col items-center space-y-6 sm:space-y-8"> {/* Responsive margin & spacing */}
         <Button 

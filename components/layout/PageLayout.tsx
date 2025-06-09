@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FixedHeader } from './FixedHeader'; // Import the new FixedHeader component
 
 interface PageLayoutProps {
   mainTitle: React.ReactNode;
@@ -8,6 +9,7 @@ interface PageLayoutProps {
   centerVertically?: boolean;
   secondaryTitle?: string;
   showAdminHomeButton?: boolean;
+  displayLogoInHeader?: boolean; // New prop
 }
 
 export const PageLayout: React.FC<PageLayoutProps> = ({
@@ -17,8 +19,9 @@ export const PageLayout: React.FC<PageLayoutProps> = ({
   centerVertically = false,
   secondaryTitle,
   showAdminHomeButton = false,
+  displayLogoInHeader = false, // Default new prop
 }) => {
-  const isAdminLayout = showAdminHomeButton && !secondaryTitle;
+  const isAdminLayout = showAdminHomeButton && !secondaryTitle && !displayLogoInHeader;
 
   return (
     <div
@@ -35,15 +38,13 @@ export const PageLayout: React.FC<PageLayoutProps> = ({
           flex flex-col flex-grow 
         `}
       >
-        {/* Top Bar for Admin Home Button & Secondary Title */}
-        {(showAdminHomeButton || secondaryTitle) && (
+        {/* Top Bar for Admin Home Button & Secondary Title / FixedHeader */}
+        {(showAdminHomeButton || secondaryTitle || displayLogoInHeader) && (
           <div className="w-full flex justify-between items-center 
                         mb-6 sm:mb-8 md:mb-10 lg:mb-12 /* Responsive bottom margin */
                         px-3 sm:px-4 md:px-6 lg:px-8"> {/* Consistent horizontal padding */}
-            {secondaryTitle ? (
-              <h2 className="text-2xl sm:text-3xl text-gray-700 font-semibold text-left min-w-0"> {/* Removed negative margins */}
-                {secondaryTitle}
-              </h2>
+            {(secondaryTitle || displayLogoInHeader) ? (
+              <FixedHeader title={secondaryTitle} /> // Pass secondaryTitle; FixedHeader handles if it's undefined
             ) : <div />} {/* Placeholder for justify-between */}
             {showAdminHomeButton && (
               <Link
