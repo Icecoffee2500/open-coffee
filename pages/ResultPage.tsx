@@ -1,13 +1,11 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelections } from '../contexts/SelectionContext';
-import { Button } from '../components/core/Button';
 import { PageLayout } from '../components/layout/PageLayout';
-import { Card } from '../components/core/Card';
 import { RecommendationRule } from '../types';
 import { useRecommendation } from '../hooks/useRecommendation';
-import { GiftIcon } from '../components/icons/GiftIcon';
-import { RefreshIcon } from '../components/icons/RefreshIcon';
+import { Button } from '../components/core/Button';
+import { ArrowLeftIcon } from '../components/icons/ArrowLeftIcon';
 
 interface ResultPageProps {
   recommendationRules: RecommendationRule[];
@@ -15,82 +13,85 @@ interface ResultPageProps {
 
 const ResultPage: React.FC<ResultPageProps> = ({ recommendationRules }) => {
   const navigate = useNavigate();
-  const { selections, resetSelections } = useSelections();
+  const { selections, resetSelections } = useSelections(); 
   
   const recommendedBean = useRecommendation(selections, recommendationRules);
-
-  const handleStartOver = () => {
-    resetSelections();
-    navigate('/');
-  };
 
   React.useEffect(() => {
     if (!selections.roastLevel || !selections.flavor1) {
       navigate('/');
     }
-  }, [selections, navigate]);
+    if (!recommendedBean && (selections.roastLevel && selections.flavor1)) {
+        const timer = setTimeout(() => {
+            resetSelections(); 
+            navigate('/');
+        }, 50); 
+        return () => clearTimeout(timer);
+    }
 
-  if (!selections.roastLevel || !selections.flavor1) {
-     return null;
+  }, [selections, navigate, recommendedBean, resetSelections]);
+
+  if (!recommendedBean) {
+    return (
+        <PageLayout 
+          mainTitle="결과를 찾는 중..." 
+          secondaryTitle="당신이 좋아하는 커피의 취향은?"
+          centerVertically={true}
+        >
+            <p className="text-gray-600 text-base sm:text-lg text-center">잠시만 기다려주세요. 선택하신 내용으로 커피를 찾고 있습니다.</p>
+        </PageLayout>
+    );
   }
+  
+  const mainTitleContent = (
+    <span className="block font-bold font-title leading-tight text-center whitespace-nowrap
+                   text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl"> {/* Responsive font size */}
+      {recommendedBean.beanName}
+    </span>
+  );
+
+  const descriptionContent = (
+    <>
+      <p className="text-gray-700 font-subtitle text-center
+                   text-lg sm:text-xl md:text-2xl lg:text-3xl /* Responsive font size */
+                   mt-1 sm:mt-2 mb-4 sm:mb-6 md:mb-8"> {/* Responsive margins */}
+        {recommendedBean.beanNameEn}
+      </p>
+      <hr className="border-t border-gray-400 mx-auto 
+                   w-24 sm:w-28 md:w-32 lg:w-40 /* Responsive width */
+                   mb-4 sm:mb-6 md:mb-8" /> {/* Responsive margin */}
+      <p className="text-gray-700 whitespace-pre-line text-center
+                   text-sm sm:text-base md:text-lg lg:text-xl /* Responsive font size */
+                   leading-relaxed sm:leading-loose">
+        {recommendedBean.description}
+      </p>
+    </>
+  );
+
+  const handleReturnHome = () => {
+    resetSelections();
+    navigate('/');
+  };
 
   return (
     <PageLayout 
-      title="당신을 위한 추천 커피" 
-      subtitle="당신의 취향에 맞는 완벽한 원두를 찾았어요!"
-      centerVertically={true}
+      mainTitle={mainTitleContent}
+      description={descriptionContent}
+      secondaryTitle="당신이 좋아하는 커피의 취향은?"
+      centerVertically={true} 
     >
-      <Card className="max-w-md mx-auto">
-        <img 
-            src={`https://picsum.photos/seed/${recommendedBean?.beanName.replace(/[^a-zA-Z0-9]/g, '-') || 'default'}/400/200`} 
-            alt={recommendedBean ? `Recommended coffee: ${recommendedBean.beanName}` : "Coffee cup illustration"}
-            className="rounded-lg mb-6 w-full object-cover h-48" 
-        />
-        {recommendedBean ? (
-          <>
-            <div className="mb-6 p-4 bg-gray-50 rounded-xl border border-gray-200">
-              <p className="text-lg text-gray-800 mb-2 font-semibold">선택하신 조건:</p>
-              <ul className="text-gray-700 space-y-1">
-                <li><span className="font-medium">로스팅:</span> {selections.roastLevel}</li>
-                <li><span className="font-medium">주요 향미:</span> {selections.flavor1}</li>
-                {selections.flavor2 && <li><span className="font-medium">세부 향미:</span> {selections.flavor2}</li>}
-              </ul>
-            </div>
-            
-            <div className="text-center mb-8">
-              <p className="text-xl sm:text-2xl font-semibold text-gray-800 mb-2">추천 원두는 바로...</p>
-              <div className="flex items-center justify-center text-sky-600 mb-2">
-                <GiftIcon className="h-10 w-10 mr-3 text-sky-500" />
-                <p className="text-4xl sm:text-5xl font-bold">
-                  {recommendedBean.beanName}
-                </p>
-              </div>
-            </div>
-            <p className="text-gray-600 mb-8 text-sm">
-              이 원두는 당신의 섬세한 취향을 만족시킬 특별한 경험을 선사할 것입니다. 즐거운 커피 생활 되세요!
-            </p>
-          </>
-        ) : (
-          <>
-            <p className="text-xl text-red-500 mb-4 font-semibold">
-              죄송합니다!
-            </p>
-            <p className="text-gray-700 mb-6">
-             현재 선택하신 조합에 맞는 원두를 찾을 수 없습니다. 다른 옵션으로 다시 시도해보시는 건 어떨까요?
-            </p>
-          </>
-        )}
-        <Button 
-          onClick={handleStartOver} 
-          variant="primary"
-          size="lg" 
-          className="w-full sm:w-auto flex items-center justify-center group"
-          aria-label="Start over the recommendation process"
+      <div className="mt-10 sm:mt-12 md:mt-16 lg:mt-20 xl:mt-24 text-center"> {/* Responsive margin */}
+        <Button
+          onClick={handleReturnHome}
+          variant="textual-navigation"
+          size="md"
+          aria-label="처음으로 돌아가기"
+          className="font-semibold"
         >
-          <RefreshIcon className="h-5 w-5 mr-2 text-white transition-colors" />
-          처음부터 다시하기
+          <ArrowLeftIcon className="w-4 h-4 sm:w-5 sm:h-5 mr-1.5 sm:mr-2" /> {/* Responsive icon size & margin */}
+          처음으로 돌아가기
         </Button>
-      </Card>
+      </div>
     </PageLayout>
   );
 };

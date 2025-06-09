@@ -1,47 +1,108 @@
 import React from 'react';
-import { APP_TITLE } from '../../constants';
 import { Link } from 'react-router-dom';
 
 interface PageLayoutProps {
-  title: string;
-  subtitle?: string;
-  children: React.ReactNode;
-  centerVertically?: boolean; // New prop for conditional vertical centering
+  mainTitle: React.ReactNode;
+  children?: React.ReactNode;
+  description?: React.ReactNode;
+  centerVertically?: boolean;
+  secondaryTitle?: string;
+  showAdminHomeButton?: boolean;
 }
 
-export const PageLayout: React.FC<PageLayoutProps> = ({ title, subtitle, children, centerVertically = false }) => {
-  const mainContentClasses = `
-    flex-grow w-full max-w-2xl text-center 
-    mt-20 sm:mt-24 px-2 pb-16 sm:pb-20
-    ${centerVertically ? 'flex flex-col justify-center' : ''}
-  `;
+export const PageLayout: React.FC<PageLayoutProps> = ({
+  mainTitle,
+  description,
+  children,
+  centerVertically = false,
+  secondaryTitle,
+  showAdminHomeButton = false,
+}) => {
+  const isAdminLayout = showAdminHomeButton && !secondaryTitle;
 
   return (
-    <div className="min-h-screen flex flex-col items-center p-4">
-      <header className="absolute top-0 left-0 right-0 p-4 sm:p-6 flex justify-between items-center z-10">
-        <Link to="/" className="text-xl sm:text-2xl font-semibold text-gray-800 hover:text-sky-600 transition-colors">
-          {APP_TITLE}
-        </Link>
-        <nav>
-          <Link 
-            to="/admin" 
-            className="text-gray-600 hover:text-sky-700 font-normal mr-2 sm:mr-4 px-3 py-1.5 rounded-lg hover:bg-gray-200 transition-colors text-sm sm:text-base"
-            aria-label="Admin Page"
-          >
-            Admin
-          </Link>
-        </nav>
-      </header>
-      
-      <main className={mainContentClasses.trim()}>
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-3">{title}</h1>
-        {subtitle && <p className="text-lg sm:text-xl text-gray-600 mb-8 sm:mb-12">{subtitle}</p>}
-        {children}
-      </main>
-      
-      <footer className="w-full p-4 text-center text-gray-500 text-sm">
-        &copy; {new Date().getFullYear()} {APP_TITLE}. All rights reserved.
-      </footer>
+    <div
+      className={`
+        min-h-screen bg-white text-black flex flex-col items-center
+        ${isAdminLayout ? 'pt-8 sm:pt-10 md:pt-12' : 'pt-20 sm:pt-24 md:pt-28'}
+      `}
+    >
+      {/* Main content block shell */}
+      <div
+        className={`
+          w-full max-w-3xl lg:max-w-4xl mx-auto /* Adjusted max-width for larger screens */
+          pb-10 sm:pb-12 md:pb-16 lg:pb-20 /* Responsive bottom padding */
+          flex flex-col flex-grow 
+        `}
+      >
+        {/* Top Bar for Admin Home Button & Secondary Title */}
+        {(showAdminHomeButton || secondaryTitle) && (
+          <div className="w-full flex justify-between items-center 
+                        mb-6 sm:mb-8 md:mb-10 lg:mb-12 /* Responsive bottom margin */
+                        px-3 sm:px-4 md:px-6 lg:px-8"> {/* Consistent horizontal padding */}
+            {secondaryTitle ? (
+              <h2 className="text-2xl sm:text-3xl text-gray-700 font-semibold text-left min-w-0"> {/* Removed negative margins */}
+                {secondaryTitle}
+              </h2>
+            ) : <div />} {/* Placeholder for justify-between */}
+            {showAdminHomeButton && (
+              <Link
+                to="/"
+                className="text-xs sm:text-sm md:text-base font-medium text-gray-600 hover:text-black transition-colors 
+                           px-2 py-1 sm:px-3 sm:py-2 rounded-md hover:bg-gray-100 flex-shrink-0" 
+                aria-label="홈 페이지로 이동"
+              >
+                Home
+              </Link>
+            )}
+          </div>
+        )}
+        
+        {/* Inner container for main content: this part handles vertical centering if enabled and main horizontal padding */}
+        <div 
+          className={`
+            w-full flex flex-col items-center px-3 sm:px-4 md:px-6 lg:px-8 {/* Responsive horizontal padding */}
+            ${centerVertically ? 'flex-grow justify-center' : ''}
+          `}
+        >
+          {/* Main Title */}
+          {typeof mainTitle === 'string' ? (
+            <h1 className={`
+              font-bold leading-tight font-title text-black text-center w-full
+              text-lg sm:text-xl md:text-3xl lg:text-4xl xl:text-5xl /* Adjusted responsive font size */
+              mb-8 sm:mb-10 md:mb-12 lg:mb-16 /* Responsive bottom margin */
+            `}>
+              {mainTitle}
+            </h1>
+          ) : (
+            // If mainTitle is a ReactNode (e.g., HomePage), use a wrapper.
+            <div className="text-center w-full mb-6 sm:mb-8 md:mb-10 lg:mb-12"> {/* Responsive bottom margin */}
+              {mainTitle}
+            </div>
+          )}
+
+          {/* Description */}
+          {description && (
+            <div className="text-gray-700 w-full max-w-2xl 
+                          mb-6 sm:mb-8 md:mb-10 lg:mb-12 /* Responsive bottom margin */
+                          text-sm sm:text-base md:text-lg lg:text-xl /* Responsive font size */
+                          ">
+              {typeof description === 'string' ? (
+                <p className="text-center leading-relaxed">{description}</p>
+              ) : (
+                description
+              )}
+            </div>
+          )}
+
+          {/* Children (e.g., selection circles, buttons) */}
+          {children && (
+            <div className="w-full flex flex-col items-center">
+              {children}
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   );
 };

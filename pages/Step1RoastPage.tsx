@@ -1,12 +1,10 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelections } from '../contexts/SelectionContext';
-import { Button } from '../components/core/Button';
 import { PageLayout } from '../components/layout/PageLayout';
-import { Card } from '../components/core/Card';
 import { RoastLevel } from '../types';
-import { STEP1_ROAST_OPTIONS } from '../constants';
-import { ChevronRightIcon } from '../components/icons/ChevronRightIcon';
+import { STEP1_ROAST_OPTIONS, ROAST_DETAILS } from '../constants';
+import { SelectionCircle } from '../components/core/SelectionCircle';
 
 const Step1RoastPage: React.FC = () => {
   const navigate = useNavigate();
@@ -17,53 +15,35 @@ const Step1RoastPage: React.FC = () => {
     navigate('/step2');
   };
 
-  const getImageForRoast = (roast: RoastLevel) => {
-    switch (roast) {
-      case RoastLevel.MediumLight:
-        return { src: "https://picsum.photos/seed/mediumlightroast/150/150", alt: "Medium Light Roast Beans" };
-      case RoastLevel.Medium:
-        return { src: "https://picsum.photos/seed/mediumroastbeans/150/150", alt: "Medium Roast Beans" };
-      case RoastLevel.City:
-        return { src: "https://picsum.photos/seed/cityroastbeans/150/150", alt: "City Roast Beans" };
-      default:
-        return { src: "https://picsum.photos/seed/coffeecup/150/150", alt: "Coffee beans" };
-    }
-  };
-
   return (
     <PageLayout 
-      title="당신이 좋아하는 커피의 취향은?"
-      subtitle="Step 1: 어느 정도 로스팅된 커피를 좋아하시나요?"
-      centerVertically={true}
+      mainTitle="어느 정도 로스팅된 커피를 좋아하시나요?"
+      secondaryTitle="당신이 좋아하는 커피의 취향은?"
+      centerVertically={true} 
     >
-      <Card>
-        <div className="flex flex-wrap justify-center gap-x-4 gap-y-6 sm:gap-x-6 sm:gap-y-8">
-          {STEP1_ROAST_OPTIONS.map((roast) => {
-            const image = getImageForRoast(roast);
-            return (
-              <div key={roast} className="flex flex-col items-center w-32 sm:w-36 text-center">
-                <img 
-                  src={image.src} 
-                  alt={image.alt} 
-                  className="w-28 h-28 object-cover rounded-xl mb-3 shadow-md hover:shadow-lg transition-shadow duration-300 cursor-pointer"
-                  onClick={() => handleSelectRoast(roast)}
-                  aria-hidden="true" // Image is decorative as button has label
-                />
-                <Button 
-                  onClick={() => handleSelectRoast(roast)}
-                  variant="secondary"
-                  size="md" // Adjusted button size
-                  className="w-full flex justify-between items-center group"
-                  aria-label={`Select roast level: ${roast}`}
-                >
-                  <span>{roast}</span>
-                  <ChevronRightIcon className="h-5 w-5 text-sky-600 group-hover:text-sky-700 transition-colors" />
-                </Button>
-              </div>
-            );
-          })}
-        </div>
-      </Card>
+      <div className="flex flex-wrap justify-center 
+                    gap-3 sm:gap-4 md:gap-5 lg:gap-6 /* Responsive gap */
+                    p-3 sm:p-4 /* Responsive padding for hover effect space */
+                    ">
+        {STEP1_ROAST_OPTIONS.map((roast) => {
+          const details = ROAST_DETAILS[roast];
+          return (
+            <SelectionCircle
+              key={roast}
+              text={details.text}
+              colorClass={details.color}
+              onClick={() => handleSelectRoast(roast)}
+              ariaLabel={`로스팅 단계 선택: ${roast}`}
+            />
+          );
+        })}
+      </div>
+      {/* Spacer div to push content up, matching effective height of Step 2/3's "Previous" button area */}
+      <div 
+        className="h-[100px] sm:h-[120px] md:h-[136px] lg:h-[152px] xl:h-[168px] /* Responsive spacer height */
+                   w-full flex-shrink-0 pointer-events-none" 
+        aria-hidden="true" 
+      />
     </PageLayout>
   );
 };

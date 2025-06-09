@@ -1,21 +1,21 @@
 export enum RoastLevel {
-  MediumLight = "Medium Light",
-  Medium = "Medium",
-  City = "City",
+  MediumLight = "medium light",
+  Medium = "medium",
+  City = "city",
 }
 
 export enum FlavorProfile1 {
-  Flower = "Flower",
-  Fruit = "Fruit",
-  Nut = "Nut",
-  DarkChoco = "Dark Choco",
-  MilkChoco = "Milk Choco",
-  FPlusF = "F + F", // Represents "Flower + Fruit"
+  Flower = "flower",
+  Fruit = "fruit",
+  Nut = "nut",
+  DarkChoco = "dark chocolate",
+  MilkChoco = "milk chocolate",
+  FPlusF = "flower + fruit",
 }
 
 export enum FlavorProfile2 {
-  Infuse = "Infuse",
-  Balance = "Balance",
+  Infuse = "인퓨즈",
+  Balance = "밸런스",
 }
 
 export interface UserSelections {
@@ -25,13 +25,14 @@ export interface UserSelections {
 }
 
 export interface RecommendationRule {
-  id: string; // Unique ID for React keys and management
+  id: string;
   roastLevel: RoastLevel;
   flavor1: FlavorProfile1;
   flavor2?: FlavorProfile2;
-  beanName: string;
+  beanName: string; // Korean Name
+  beanNameEn: string; // English Name
+  description: string; // Korean description, can include \n
 }
 
-// For Admin page display of button options (read-only for now)
 export type Step2ButtonOptionsType = Record<RoastLevel, FlavorProfile1[]>;
 export type Step3ButtonOptionsType = FlavorProfile2[];
