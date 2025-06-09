@@ -93,6 +93,10 @@ const AdminPage: React.FC<AdminPageProps> = ({ rules, setRules, step1Options, st
     return roast === RoastLevel.Medium && flavor1 === FlavorProfile1.FPlusF;
   };
 
+  const handleClearLocalStorage = () => {
+    localStorage.clear(); // local storage 비우기
+  };
+
   return (
     <PageLayout
       mainTitle="관리자 페이지"
@@ -100,6 +104,17 @@ const AdminPage: React.FC<AdminPageProps> = ({ rules, setRules, step1Options, st
       showAdminHomeButton={true}
     >
       <div className="space-y-8 sm:space-y-10 md:space-y-12 pb-16 sm:pb-20 md:pb-24 w-full">
+        {/* Local Storage 비우기 버튼 추가 */}
+        <div className="p-4 sm:p-6 text-left">
+          <Button
+            onClick={handleClearLocalStorage}
+            variant="neutral"
+            className="flex items-center !px-2 !py-1 !text-xs sm:!px-2.5 sm:!py-1.5 sm:!text-sm"
+            aria-label="Clear Local Storage"
+          >
+            Local Storage 비우기
+          </Button>
+        </div>
         <div className="p-4 sm:p-6 text-left">
           <h2 className="text-lg sm:text-xl md:text-2xl font-semibold text-gray-800 mb-1 sm:mb-2">추천 규칙 관리</h2>
           <p className="text-xs sm:text-sm text-gray-600 mb-4 sm:mb-6">

@@ -21,7 +21,7 @@ export const Button: React.FC<ButtonProps> = ({ children, variant = 'primary', s
       variantStyle = 'border border-sky-500 text-sky-600 hover:bg-sky-50 focus:ring-sky-400 rounded-xl';
       break;
     case 'neutral': 
-      variantStyle = 'bg-gray-200 hover:bg-gray-300 text-gray-700 focus:ring-gray-400 rounded-xl';
+      variantStyle = 'bg-gray-100 hover:bg-gray-200 text-gray-700 focus:ring-gray-400 rounded-none';
       break;
     case 'textual-navigation':
       variantStyle = 'text-gray-600 hover:text-black focus:ring-gray-500 rounded-md';
