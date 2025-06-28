@@ -39,9 +39,9 @@ export interface RecommendationRule {
   flavor2?: FlavorProfile2;
   result: string;
   name: string;
-  ratio: string | number;
+  ratio: string;
   note: string;
-  weight100g: string | number;
+  weight100g: string;
 }
 
 export type Step1ButtonOptionsType = RoastLevel[];

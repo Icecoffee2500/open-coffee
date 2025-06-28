@@ -5,11 +5,11 @@ export const APP_TITLE = "오픈커피 로스터스";
 export const INITIAL_RECOMMENDATION_RULES: RecommendationRule[] = [
   {
     id: 'ml-ff-seasonal', roastLevel: RoastLevel.MediumLight, flavor1: FlavorProfile1.FloralPlusFruit, flavor2: FlavorProfile2.Seasonal,
-    result: "SEASON", name: "피서", ratio: 10, note: "플로럴, 피치, Tropical, 캔디", weight100g: "12,500"
+    result: "SEASON", name: "피서", ratio: "10", note: "플로럴, 피치, Tropical, 캔디", weight100g: "12,500"
   },
   {
     id: 'ml-ff-balanced', roastLevel: RoastLevel.MediumLight, flavor1: FlavorProfile1.FloralPlusFruit, flavor2: FlavorProfile2.Balanced,
-    result: "Baekhyeon", name: "백현", ratio: 10, note: "화사하고 섬세한 신미가 일품", weight100g: "8,800"
+    result: "Baekhyeon", name: "백현", ratio: "10", note: "화사하고 섬세한 신미가 일품", weight100g: "8,800"
   },
   {
     id: 'ml-floral-whiteflower', roastLevel: RoastLevel.MediumLight, flavor1: FlavorProfile1.Floral, flavor2: FlavorProfile2.WhiteFlower,
@@ -29,7 +29,7 @@ export const INITIAL_RECOMMENDATION_RULES: RecommendationRule[] = [
   },
   {
     id: 'm-floral-whiteflower', roastLevel: RoastLevel.Medium, flavor1: FlavorProfile1.Floral, flavor2: FlavorProfile2.WhiteFlower,
-    result: "Peru", name: "Peru El Lemon", ratio: 10, note: "데이지 꽃향, 청사과, 캐러멜", weight100g: "8,500"
+    result: "Peru", name: "Peru El Lemon", ratio: "10", note: "데이지 꽃향, 청사과, 캐러멜", weight100g: "8,500"
   },
   {
     id: 'm-floral-pinkyflower', roastLevel: RoastLevel.Medium, flavor1: FlavorProfile1.Floral, flavor2: FlavorProfile2.PinkyFlower,
@@ -37,11 +37,11 @@ export const INITIAL_RECOMMENDATION_RULES: RecommendationRule[] = [
   },
   {
     id: 'm-ff-berry', roastLevel: RoastLevel.Medium, flavor1: FlavorProfile1.FloralPlusFruit, flavor2: FlavorProfile2.Berry,
-    result: "Ethiopia", name: "Ethiopia Guji Uraga", ratio: 10, note: "라임, 라즈베리의 맛과 베리류의 향취", weight100g: "8,300"
+    result: "Ethiopia", name: "Ethiopia Guji Uraga", ratio: "10", note: "라임, 라즈베리의 맛과 베리류의 향취", weight100g: "8,300"
   },
   {
     id: 'm-ff-driedfruits', roastLevel: RoastLevel.Medium, flavor1: FlavorProfile1.FloralPlusFruit, flavor2: FlavorProfile2.DriedFruits,
-    result: "Costarica", name: "Costarica Girasoles", ratio: 10, note: "말린과일, 스카치캔디, 탠저린, 밀크쵸콜릿, Nuty", weight100g: "8,500"
+    result: "Costarica", name: "Costarica Girasoles", ratio: "10", note: "말린과일, 스카치캔디, 탠저린, 밀크쵸콜릿, Nuty", weight100g: "8,500"
   },
   {
     id: 'city-nut-Amond', roastLevel: RoastLevel.City, flavor1: FlavorProfile1.Nut, flavor2: FlavorProfile2.Amond,
@@ -57,7 +57,7 @@ export const INITIAL_RECOMMENDATION_RULES: RecommendationRule[] = [
   },
   {
     id: 'city-choco-dark', roastLevel: RoastLevel.City, flavor1: FlavorProfile1.Choco, flavor2: FlavorProfile2.Dark,
-    result: "Open", name: "OPEN", ratio: 10, note: "고소하고 우아한 한잔, 중강배전", weight100g: "6,300"
+    result: "Open", name: "OPEN", ratio: "10", note: "고소하고 우아한 한잔, 중강배전", weight100g: "6,300"
   },
 ];
 

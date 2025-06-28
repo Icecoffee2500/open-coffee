@@ -66,7 +66,7 @@ const AdminPage: React.FC<AdminPageProps> = ({ rules, setRules, step1Options, st
 
   const handleInputChange = (
     field: keyof RecommendationRule,
-    value: string | number | RoastLevel | FlavorProfile1 | FlavorProfile2 | undefined
+    value: string | RoastLevel | FlavorProfile1 | FlavorProfile2 | undefined
   ) => {
     setEditingRuleData(prev => {
       if (!prev) return null;
@@ -195,9 +195,9 @@ const AdminPage: React.FC<AdminPageProps> = ({ rules, setRules, step1Options, st
                         </td>
                         <td className="px-3 py-3 sm:px-4 sm:py-4 text-xs sm:text-sm">
                           <input
-                            type="number"
+                            type="text"
                             value={editingRuleData.ratio || ''}
-                            onChange={(e) => handleInputChange('ratio', parseFloat(e.target.value))}
+                            onChange={(e) => handleInputChange('ratio', e.target.value)}
                             className="w-full p-2 text-xs sm:text-sm border border-gray-300 rounded-md sm:rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition shadow-sm"
                             placeholder="비율"
                           />
@@ -213,9 +213,9 @@ const AdminPage: React.FC<AdminPageProps> = ({ rules, setRules, step1Options, st
                         </td>
                         <td className="px-3 py-3 sm:px-4 sm:py-4 text-xs sm:text-sm">
                           <input
-                            type="number"
+                            type="text"
                             value={editingRuleData.weight100g || ''}
-                            onChange={(e) => handleInputChange('weight100g', parseFloat(e.target.value))}
+                            onChange={(e) => handleInputChange('weight100g', e.target.value)}
                             className="w-full p-2 text-xs sm:text-sm border border-gray-300 rounded-md sm:rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition shadow-sm"
                             placeholder="가격"
                           />
