@@ -78,7 +78,7 @@ const ResultPage: React.FC<ResultPageProps> = ({ recommendationRules }) => {
         secondaryTitle="당신이 좋아하는 커피의 취향은?"
         centerVertically={false}
       >
-        <div className="w-full max-w-6xl mx-auto">
+        <div className="w-full max-w-6xl mx-auto -mt-8 lg:-mt-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
             {/* 이미지 섹션 */}
             <div className="flex justify-center lg:justify-end order-2 lg:order-1">
@@ -115,7 +115,7 @@ const ResultPage: React.FC<ResultPageProps> = ({ recommendationRules }) => {
           </div>
           
           {/* 하단 버튼 */}
-          <div className="mt-12 lg:mt-16 text-center">
+          <div className="mt-6 lg:mt-8 text-center">
             <Button
               onClick={handleReturnHome}
               variant="textual-navigation"
