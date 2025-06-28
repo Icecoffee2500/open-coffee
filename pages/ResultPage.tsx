@@ -79,7 +79,7 @@ const ResultPage: React.FC<ResultPageProps> = ({ recommendationRules }) => {
         centerVertically={false}
       >
         {/* <div className="w-full max-w-6xl mx-auto -mt-8 lg:-mt-12"> */}
-                 <div className="w-full max-w-6xl mx-auto mt-24 sm:mt-0 md:-mt-8 lg:-mt-24">
+                 <div className="w-full max-w-6xl mx-auto mt-4 sm:mt-0 md:-mt-8 lg:-mt-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
             {/* 이미지 섹션 */}
             <div className="flex justify-center lg:justify-end order-2 lg:order-1">
