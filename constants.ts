@@ -21,7 +21,7 @@ export const INITIAL_RECOMMENDATION_RULES: RecommendationRule[] = [
   },
   {
     id: 'ml-fruits-berry', roastLevel: RoastLevel.MediumLight, flavor1: FlavorProfile1.Fruits, flavor2: FlavorProfile2.Berry,
-    result: "B.H + Ethiopia", name: "Raspberry", ratio: "6:4", note: "사루비아의 허니함에 뒤따르는 허브민트향 라즈베리의 달콤함까지", weight100g: "8,600"
+    result: "B.H + Ethiopia", name: "Raspberry", ratio: "6:4", note: "사루비아의 허니함에 뒤따르는\n허브민트향 라즈베리의 달콤함까지", weight100g: "8,600"
   },
   {
     id: 'ml-fruits-peach', roastLevel: RoastLevel.MediumLight, flavor1: FlavorProfile1.Fruits, flavor2: FlavorProfile2.Peach,
