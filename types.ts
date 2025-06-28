@@ -1,21 +1,29 @@
 export enum RoastLevel {
-  MediumLight = "medium light",
-  Medium = "medium",
-  City = "city",
+  MediumLight = 'Medium Light',
+  Medium = 'Medium',
+  City = 'City',
 }
 
 export enum FlavorProfile1 {
-  Flower = "flower",
-  Fruit = "fruit",
-  Nut = "nut",
-  DarkChoco = "dark chocolate",
-  MilkChoco = "milk chocolate",
-  FPlusF = "flower + fruit",
+  FloralPlusFruit = 'Floral+Fruit',
+  Floral = 'Floral',
+  Fruits = 'Fruits',
+  Nut = 'Nut',
+  Choco = 'Choco',
 }
 
 export enum FlavorProfile2 {
-  Infuse = "인퓨즈",
-  Balance = "밸런스",
+  Seasonal = 'Seasonal',
+  Balanced = 'Balanced',
+  WhiteFlower = 'White Flower',
+  PinkyFlower = 'Pinky Flower',
+  Berry = 'Berry',
+  Peach = 'Peach',
+  DriedFruits = 'Dried Fruits',
+  Amond = 'Amond',
+  BrazielNut = 'Braziel Nut',
+  Milk = 'Milk',
+  Dark = 'Dark',
 }
 
 export interface UserSelections {
@@ -29,10 +37,17 @@ export interface RecommendationRule {
   roastLevel: RoastLevel;
   flavor1: FlavorProfile1;
   flavor2?: FlavorProfile2;
-  beanName: string; // Korean Name
-  beanNameEn: string; // English Name
-  description: string; // Korean description, can include \n
+  result: string;
+  name: string;
+  ratio: string | number;
+  note: string;
+  weight100g: string | number;
 }
 
-export type Step2ButtonOptionsType = Record<RoastLevel, FlavorProfile1[]>;
+export type Step1ButtonOptionsType = RoastLevel[];
+
+export type Step2ButtonOptionsType = {
+  [key in RoastLevel]: FlavorProfile1[];
+};
+
 export type Step3ButtonOptionsType = FlavorProfile2[];

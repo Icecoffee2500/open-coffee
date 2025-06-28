@@ -8,8 +8,8 @@ import Step2FlavorPage from './pages/Step2FlavorPage';
 import Step3DetailFlavorPage from './pages/Step3DetailFlavorPage';
 import ResultPage from './pages/ResultPage';
 import AdminPage from './pages/AdminPage';
-import { INITIAL_RECOMMENDATION_RULES, STEP1_ROAST_OPTIONS, STEP2_FLAVOR1_OPTIONS, STEP3_FLAVOR2_OPTIONS } from './constants';
-import { RecommendationRule } from './types';
+import { RecommendationRule, RoastLevel, FlavorProfile2 } from './types';
+import { INITIAL_RECOMMENDATION_RULES, STEP1_ROAST_OPTIONS, STEP2_FLAVOR1_OPTIONS } from './constants';
 
 const LOCAL_STORAGE_KEY = 'coffeeRecommenderRules';
 
@@ -21,7 +21,7 @@ const AppContent: React.FC = () => {
       if (storedRules) {
         const parsedRules = JSON.parse(storedRules) as RecommendationRule[];
         // Basic validation: check if it's an array and has expected properties (optional but good)
-        if (Array.isArray(parsedRules) && parsedRules.length > 0 && parsedRules[0].id && parsedRules[0].beanName) {
+        if (Array.isArray(parsedRules) && parsedRules.length > 0 && parsedRules[0].id && parsedRules[0].result) {
           return parsedRules;
         }
       }
@@ -45,6 +45,9 @@ const AppContent: React.FC = () => {
     }
   }, [recommendationRules]);
 
+  // 모든 FlavorProfile2 값들을 배열로 생성
+  const allStep3Options = Object.values(FlavorProfile2);
+
   return (
     <>
       <Routes>
@@ -61,7 +64,7 @@ const AppContent: React.FC = () => {
               setRules={setRecommendationRules}
               step1Options={STEP1_ROAST_OPTIONS}
               step2Options={STEP2_FLAVOR1_OPTIONS}
-              step3Options={STEP3_FLAVOR2_OPTIONS}
+              step3Options={allStep3Options}
             />
           } 
         />

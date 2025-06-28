@@ -1,9 +1,9 @@
-import React from 'react';
+import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelections } from '../contexts/SelectionContext';
 import { PageLayout } from '../components/layout/PageLayout';
 import { FlavorProfile2, RoastLevel, FlavorProfile1 } from '../types';
-import { STEP3_FLAVOR2_OPTIONS, FLAVOR2_DETAILS } from '../constants';
+import { STEP3_OPTIONS_BY_COMBINATION, FLAVOR2_DETAILS } from '../constants';
 import { SelectionCircle } from '../components/core/SelectionCircle';
 import { Button } from '../components/core/Button';
 import { ArrowLeftIcon } from '../components/icons/ArrowLeftIcon';
@@ -13,14 +13,18 @@ const Step3DetailFlavorPage: React.FC = () => {
   const { selections, setFlavor2 } = useSelections();
 
   React.useEffect(() => {
-    if (selections.roastLevel !== RoastLevel.Medium || selections.flavor1 !== FlavorProfile1.FPlusF) {
-      navigate('/'); 
+    if (!selections.roastLevel || !selections.flavor1) {
+      navigate('/');
     }
-  }, [selections, navigate]);
-  
-  if (selections.roastLevel !== RoastLevel.Medium || selections.flavor1 !== FlavorProfile1.FPlusF) {
-    return null; 
+  }, [selections.roastLevel, selections.flavor1, navigate]);
+
+  if (!selections.roastLevel || !selections.flavor1) {
+    return null;
   }
+
+  // 현재 선택된 조합에 따른 사용 가능한 옵션 가져오기
+  const combinationKey = `${selections.roastLevel}-${selections.flavor1}`;
+  const availableOptions = STEP3_OPTIONS_BY_COMBINATION[combinationKey] || [];
 
   const handleSelectDetailFlavor = (flavor: FlavorProfile2) => {
     setFlavor2(flavor);
@@ -37,7 +41,7 @@ const Step3DetailFlavorPage: React.FC = () => {
                     gap-3 sm:gap-4 md:gap-5 lg:gap-6 /* Responsive gap */
                     p-3 sm:p-4 /* Responsive padding for hover effect space */
                     ">
-        {STEP3_FLAVOR2_OPTIONS.map((flavor) => {
+        {availableOptions.map((flavor) => {
           const details = FLAVOR2_DETAILS[flavor];
           return (
             <SelectionCircle

@@ -27,7 +27,7 @@ export const SelectionCircle: React.FC<SelectionCircleProps> = ({
         rounded-full
         flex items-center justify-center
         text-white text-center font-medium
-        text-sm sm:text-base md:text-lg lg:text-xl /* Responsive text size */
+        text-base sm:text-lg md:text-xl lg:text-2xl /* Responsive text size - increased for better readability */
         p-2 sm:p-3 md:p-4 /* Responsive padding */
         cursor-pointer
         transition-transform duration-150 ease-in-out

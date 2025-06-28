@@ -1,26 +1,36 @@
+import { useMemo } from 'react';
 import { UserSelections, RecommendationRule, RoastLevel, FlavorProfile1 } from '../types';
 
-export const useRecommendation = (
-  selections: UserSelections,
-  rules: RecommendationRule[]
-): RecommendationRule | null => {
-  if (!selections.roastLevel || !selections.flavor1) {
+export const useRecommendation = (selections: UserSelections, rules: RecommendationRule[]): RecommendationRule | null => {
+  return useMemo(() => {
+    if (!selections.roastLevel || !selections.flavor1) {
+      return null;
+    }
+
+    // 정확히 일치하는 규칙 찾기
+    const exactMatch = rules.find(rule => 
+      rule.roastLevel === selections.roastLevel &&
+      rule.flavor1 === selections.flavor1 &&
+      rule.flavor2 === selections.flavor2
+    );
+
+    if (exactMatch) {
+      return exactMatch;
+    }
+
+    // flavor2가 없는 경우, flavor2가 undefined인 규칙 찾기
+    if (!selections.flavor2) {
+      const matchWithoutFlavor2 = rules.find(rule =>
+        rule.roastLevel === selections.roastLevel &&
+        rule.flavor1 === selections.flavor1 &&
+        !rule.flavor2
+      );
+      
+      if (matchWithoutFlavor2) {
+        return matchWithoutFlavor2;
+      }
+    }
+
     return null;
-  }
-
-  const { roastLevel, flavor1, flavor2 } = selections;
-
-  const matchedRule = rules.find(rule => {
-    if (rule.roastLevel !== roastLevel || rule.flavor1 !== flavor1) {
-      return false;
-    }
-    // Handle cases that require flavor2 (e.g., Medium + F+F)
-    if (roastLevel === RoastLevel.Medium && flavor1 === FlavorProfile1.FPlusF) {
-      return rule.flavor2 === flavor2;
-    }
-    // For other cases, flavor2 should not be set in the rule or is undefined in selections
-    return rule.flavor2 === undefined || rule.flavor2 === flavor2;
-  });
-
-  return matchedRule || null;
+  }, [selections, rules]);
 };

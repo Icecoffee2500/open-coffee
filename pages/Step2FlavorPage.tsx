@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelections } from '../contexts/SelectionContext';
 import { PageLayout } from '../components/layout/PageLayout';
@@ -26,11 +26,7 @@ const Step2FlavorPage: React.FC = () => {
 
   const handleSelectFlavor = (flavor: FlavorProfile1) => {
     setFlavor1(flavor);
-    if (selections.roastLevel === RoastLevel.Medium && flavor === FlavorProfile1.FPlusF) {
-      navigate('/step3');
-    } else {
-      navigate('/result');
-    }
+    navigate('/step3');
   };
 
   return (
