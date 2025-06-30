@@ -44,7 +44,7 @@ export const INITIAL_RECOMMENDATION_RULES: RecommendationRule[] = [
     result: "Costarica", name: "Costarica Girasoles", ratio: "10", note: "말린과일, 스카치캔디, 탠저린, 밀크쵸콜릿, Nuty", weight100g: "8,500"
   },
   {
-    id: 'city-nut-Amond', roastLevel: RoastLevel.City, flavor1: FlavorProfile1.Nut, flavor2: FlavorProfile2.Amond,
+    id: 'city-nut-Almond', roastLevel: RoastLevel.City, flavor1: FlavorProfile1.Nut, flavor2: FlavorProfile2.Almond,
     result: "Open + Costarica", name: "COTTAGE", ratio: "6:4", note: "아몬드와 헤이즐넛의 고소한 단맛", weight100g: "7,200"
   },
   {
@@ -91,7 +91,7 @@ export const STEP3_OPTIONS_BY_COMBINATION: Record<string, FlavorProfile2[]> = {
   [`${RoastLevel.Medium}-${FlavorProfile1.FloralPlusFruit}`]: [FlavorProfile2.Berry, FlavorProfile2.DriedFruits],
   
   // City + Nut
-  [`${RoastLevel.City}-${FlavorProfile1.Nut}`]: [FlavorProfile2.Amond, FlavorProfile2.BrazielNut],
+  [`${RoastLevel.City}-${FlavorProfile1.Nut}`]: [FlavorProfile2.Almond, FlavorProfile2.BrazielNut],
   
   // City + Choco
   [`${RoastLevel.City}-${FlavorProfile1.Choco}`]: [FlavorProfile2.Milk, FlavorProfile2.Dark],
@@ -142,7 +142,7 @@ export const FLAVOR2_DETAILS: Record<FlavorProfile2, CircleDetail> = {
   [FlavorProfile2.Berry]: { text: "Berry", color: "bg-[#B07E5E]" },
   [FlavorProfile2.Peach]: { text: "Peach", color: "bg-[#B07E5E]" },
   [FlavorProfile2.DriedFruits]: { text: "Dried\nFruits", color: "bg-[#B07E5E]" },
-  [FlavorProfile2.Amond]: { text: "Amond", color: "bg-[#5A3A29]" },
+  [FlavorProfile2.Almond]: { text: "Almond", color: "bg-[#5A3A29]" },
   [FlavorProfile2.BrazielNut]: { text: "Braziel\nNut", color: "bg-[#5A3A29]" },
   [FlavorProfile2.Milk]: { text: "Milk", color: "bg-[#5A3A29]" },
   [FlavorProfile2.Dark]: { text: "Dark", color: "bg-[#5A3A29]" },

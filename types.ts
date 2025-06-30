@@ -20,7 +20,7 @@ export enum FlavorProfile2 {
   Berry = 'Berry',
   Peach = 'Peach',
   DriedFruits = 'Dried Fruits',
-  Amond = 'Amond',
+  Almond = 'Almond',
   BrazielNut = 'Braziel Nut',
   Milk = 'Milk',
   Dark = 'Dark',
