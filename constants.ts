@@ -41,7 +41,7 @@ export const INITIAL_RECOMMENDATION_RULES: RecommendationRule[] = [
   },
   {
     id: 'm-ff-driedfruits', roastLevel: RoastLevel.Medium, flavor1: FlavorProfile1.FloralPlusFruit, flavor2: FlavorProfile2.DriedFruits,
-    result: "c", name: "Costarica Girasoles", ratio: "10", note: "말린과일, 스카치캔디, 탠저린, 밀크쵸콜릿, Nuty", weight100g: "8,500"
+    result: "Costarica", name: "Costarica Girasoles", ratio: "10", note: "말린과일, 스카치캔디, 탠저린, 밀크쵸콜릿, Nuty", weight100g: "8,500"
   },
   {
     id: 'city-nut-Amond', roastLevel: RoastLevel.City, flavor1: FlavorProfile1.Nut, flavor2: FlavorProfile2.Amond,
