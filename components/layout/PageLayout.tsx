@@ -62,45 +62,88 @@ export const PageLayout: React.FC<PageLayoutProps> = ({
         {/* Inner container for main content: this part handles vertical centering if enabled and main horizontal padding */}
         <div 
           className={`
-            w-full flex flex-col items-center px-3 sm:px-4 md:px-6 lg:px-8 {/* Responsive horizontal padding */}
-            ${centerVertically ? 'flex-grow justify-center' : ''}
+            w-full flex flex-col items-center px-3 sm:px-4 md:px-6 lg:px-8 /* Responsive horizontal padding */
+            ${centerVertically ? 'flex-grow' : ''}
           `}
         >
-          {/* Main Title */}
-          {typeof mainTitle === 'string' ? (
-            <h1 className={`
-              font-bold leading-tight font-title text-black text-center w-full
-              text-lg sm:text-xl md:text-3xl lg:text-4xl xl:text-5xl /* Adjusted responsive font size */
-              mb-8 sm:mb-10 md:mb-12 lg:mb-16 /* Responsive bottom margin */
-            `}>
-              {mainTitle}
-            </h1>
-          ) : (
-            // If mainTitle is a ReactNode (e.g., HomePage), use a wrapper.
-            <div className="text-center w-full mb-6 sm:mb-8 md:mb-10 lg:mb-12"> {/* Responsive bottom margin */}
-              {mainTitle}
-            </div>
-          )}
-
-          {/* Description */}
-          {description && (
-            <div className="text-gray-700 w-full max-w-2xl 
-                          mb-6 sm:mb-8 md:mb-10 lg:mb-12 /* Responsive bottom margin */
-                          text-sm sm:text-base md:text-lg lg:text-xl /* Responsive font size */
-                          ">
-              {typeof description === 'string' ? (
-                <p className="text-center leading-relaxed">{description}</p>
+          {centerVertically ? (
+            // 수직 중앙 정렬을 위한 새로운 구조
+            <div className="flex-grow flex flex-col justify-center w-full">
+              {/* Main Title */}
+              {typeof mainTitle === 'string' ? (
+                <h1 className={`
+                  font-bold leading-tight font-title text-black text-center w-full
+                  text-lg sm:text-xl md:text-3xl lg:text-4xl xl:text-5xl /* Adjusted responsive font size */
+                  mb-6 sm:mb-8 md:mb-10 lg:mb-12 /* Reduced margin for better vertical centering */
+                `}>
+                  {mainTitle}
+                </h1>
               ) : (
-                description
+                <div className="text-center w-full mb-6 sm:mb-8 md:mb-10 lg:mb-12"> {/* Responsive bottom margin */}
+                  {mainTitle}
+                </div>
+              )}
+
+              {/* Description */}
+              {description && (
+                <div className="text-gray-700 w-full max-w-2xl mx-auto
+                              mb-6 sm:mb-8 md:mb-10 lg:mb-12 /* Responsive bottom margin */
+                              text-sm sm:text-base md:text-lg lg:text-xl /* Responsive font size */
+                              ">
+                  {typeof description === 'string' ? (
+                    <p className="text-center leading-relaxed">{description}</p>
+                  ) : (
+                    description
+                  )}
+                </div>
+              )}
+
+              {/* Children (e.g., selection circles, buttons) */}
+              {children && (
+                <div className="w-full flex flex-col items-center">
+                  {children}
+                </div>
               )}
             </div>
-          )}
+          ) : (
+            // 기본 레이아웃 (수직 중앙 정렬 없음)
+            <>
+              {/* Main Title */}
+              {typeof mainTitle === 'string' ? (
+                <h1 className={`
+                  font-bold leading-tight font-title text-black text-center w-full
+                  text-lg sm:text-xl md:text-3xl lg:text-4xl xl:text-5xl /* Adjusted responsive font size */
+                  mb-8 sm:mb-10 md:mb-12 lg:mb-16 /* Responsive bottom margin */
+                `}>
+                  {mainTitle}
+                </h1>
+              ) : (
+                <div className="text-center w-full mb-6 sm:mb-8 md:mb-10 lg:mb-12"> {/* Responsive bottom margin */}
+                  {mainTitle}
+                </div>
+              )}
 
-          {/* Children (e.g., selection circles, buttons) */}
-          {children && (
-            <div className="w-full flex flex-col items-center">
-              {children}
-            </div>
+              {/* Description */}
+              {description && (
+                <div className="text-gray-700 w-full max-w-2xl mx-auto
+                              mb-6 sm:mb-8 md:mb-10 lg:mb-12 /* Responsive bottom margin */
+                              text-sm sm:text-base md:text-lg lg:text-xl /* Responsive font size */
+                              ">
+                  {typeof description === 'string' ? (
+                    <p className="text-center leading-relaxed">{description}</p>
+                  ) : (
+                    description
+                  )}
+                </div>
+              )}
+
+              {/* Children (e.g., selection circles, buttons) */}
+              {children && (
+                <div className="w-full flex flex-col items-center">
+                  {children}
+                </div>
+              )}
+            </>
           )}
         </div>
       </div>

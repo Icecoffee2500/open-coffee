@@ -33,7 +33,7 @@ const Step3DetailFlavorPage: React.FC = () => {
 
   return (
     <PageLayout
-      mainTitle="어떤 커피의 향미를 좋아하시나요?"
+      mainTitle="어떤 커피의 맛을 좋아하시나요?"
       secondaryTitle="당신이 좋아하는 커피의 취향은?"
       centerVertically={true}
     >
@@ -54,7 +54,7 @@ const Step3DetailFlavorPage: React.FC = () => {
           );
         })}
       </div>
-      <div className="mt-10 sm:mt-12 md:mt-16 lg:mt-18 text-center"> {/* Responsive margin */}
+      <div className="mt-8 sm:mt-10 md:mt-12 lg:mt-14 text-center"> {/* Reduced margin for consistency */}
         <Button
           onClick={() => navigate('/step2')}
           variant="textual-navigation"

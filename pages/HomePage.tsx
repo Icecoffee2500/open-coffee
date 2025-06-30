@@ -24,7 +24,7 @@ const HomePage: React.FC = () => {
   );
   
   const descriptionContent = (
-     <p className="text-center text-gray-700 leading-relaxed max-w-lg mx-auto
+     <p className="text-center text-gray-700 leading-relaxed
                   text-sm sm:text-base md:text-lg"> 
         오픈커피 로스터스의 원두로, <br />
         당신의 취향에 맞는 &lsquo;나만의 커피 블렌드&rsquo;를 만들어보세요.

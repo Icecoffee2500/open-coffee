@@ -54,7 +54,7 @@ const Step2FlavorPage: React.FC = () => {
           );
         })}
       </div>
-      <div className="mt-10 sm:mt-12 md:mt-16 lg:mt-18 text-center"> {/* Responsive margin */}
+      <div className="mt-8 sm:mt-10 md:mt-12 lg:mt-14 text-center"> {/* Reduced margin for consistency */}
         <Button
           onClick={() => navigate('/step1')}
           variant="textual-navigation"

@@ -38,12 +38,10 @@ const Step1RoastPage: React.FC = () => {
           );
         })}
       </div>
-      {/* Spacer div to push content up, matching effective height of Step 2/3's "Previous" button area */}
-      <div 
-        className="h-[100px] sm:h-[120px] md:h-[136px] lg:h-[152px] xl:h-[168px] /* Responsive spacer height */
-                   w-full flex-shrink-0 pointer-events-none" 
-        aria-hidden="true" 
-      />
+      <div className="mt-8 sm:mt-10 md:mt-12 lg:mt-14 text-center">
+        {/* 빈 공간 - Step2, Step3의 "이전 단계로" 버튼과 동일한 높이 확보 */}
+        <div className="h-10 sm:h-11 md:h-12" aria-hidden="true" />
+      </div>
     </PageLayout>
   );
 };

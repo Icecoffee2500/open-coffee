@@ -78,9 +78,8 @@ const ResultPage: React.FC<ResultPageProps> = ({ recommendationRules }) => {
         secondaryTitle="당신이 좋아하는 커피의 취향은?"
         centerVertically={false}
       >
-        {/* <div className="w-full max-w-6xl mx-auto -mt-8 lg:-mt-12"> */}
-                 <div className="w-full max-w-6xl mx-auto mt-0 sm:mt-0 md:-mt-8 lg:-mt-24">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+        <div className="w-full max-w-6xl mx-auto mt-0 sm:mt-0 md:-mt-8 lg:-mt-24">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center min-h-[400px] lg:min-h-[500px]">
             {/* 이미지 섹션 */}
             <div className="flex justify-center lg:justify-end order-2 lg:order-1">
               <div className="w-80 h-80 sm:w-96 sm:h-96 md:w-[28rem] md:h-[28rem] lg:w-[32rem] lg:h-[32rem] relative">
@@ -93,25 +92,27 @@ const ResultPage: React.FC<ResultPageProps> = ({ recommendationRules }) => {
             </div>
             
             {/* 텍스트 섹션 */}
-            <div className="flex flex-col justify-center order-1 lg:order-2 text-center">
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-4 lg:mb-6 whitespace-nowrap">
+            <div className="flex flex-col justify-center order-1 lg:order-2 w-full">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-4 lg:mb-6 w-full text-center">
                 {recommendedBean.name}
               </h1>
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-gray-700 mb-6 lg:mb-8">
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-gray-700 mb-6 lg:mb-8 w-full text-center">
                 {recommendedBean.result}
               </h2>
-              <hr className="border-t-2 border-gray-400 w-24 sm:w-32 md:w-40 lg:w-48 mx-auto mb-6 lg:mb-8" />
-              <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-700 leading-relaxed whitespace-pre-line mb-6">
+              <div className="w-full flex justify-center mb-6 lg:mb-8">
+                <hr className="border-t-2 border-gray-400 w-24 sm:w-32 md:w-40 lg:w-48" />
+              </div>
+              <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-700 leading-relaxed whitespace-pre-line mb-6 w-full text-center">
                 {recommendedBean.note}
               </p>
-                              <div className="text-sm sm:text-base text-gray-600 mb-8">
-                  <p>
-                    {recommendedBean.ratio === 10 || recommendedBean.ratio === "10" 
-                      ? `100g 가격: ${recommendedBean.weight100g}원`
-                      : `비율 ${recommendedBean.ratio} | 100g 가격: ${recommendedBean.weight100g}원`
-                    }
-                  </p>
-                </div>
+              <div className="w-full text-center mb-8">
+                <p className="text-sm sm:text-base text-gray-600">
+                  {recommendedBean.ratio === "10" 
+                    ? `100g 가격: ${recommendedBean.weight100g}원`
+                    : `비율 ${recommendedBean.ratio} | 100g 가격: ${recommendedBean.weight100g}원`
+                  }
+                </p>
+              </div>
             </div>
           </div>
           
@@ -158,7 +159,7 @@ const ResultPage: React.FC<ResultPageProps> = ({ recommendationRules }) => {
       </p>
       <div className="mt-4 text-center">
         <p className="text-gray-600 text-sm">
-          {recommendedBean.ratio === 10 || recommendedBean.ratio === "10" 
+          {recommendedBean.ratio === "10" 
             ? `100g 가격: ${recommendedBean.weight100g}원`
             : `비율 ${recommendedBean.ratio} | 100g 가격: ${recommendedBean.weight100g}원`
           }
