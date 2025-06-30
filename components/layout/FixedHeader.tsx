@@ -13,7 +13,7 @@ export const FixedHeader: React.FC<FixedHeaderProps> = ({ title }) => {
       <img src={logo} alt="로고" className="h-5 w-auto sm:h-6 md:h-7 mr-4" />
       {/* This h2 styling matches the original secondaryTitle styling */}
       {title && (
-        <h2 className="text-2xl sm:text-3xl text-gray-700 font-semibold min-w-0">
+        <h2 className="text-lg sm:text-xl text-gray-700 font-semibold min-w-0">
           {title}
         </h2>
       )}

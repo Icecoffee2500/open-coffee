@@ -67,8 +67,8 @@ export const PageLayout: React.FC<PageLayoutProps> = ({
           `}
         >
           {centerVertically ? (
-            // 수직 중앙 정렬을 위한 새로운 구조
-            <div className="flex-grow flex flex-col justify-center w-full">
+            // 수직 중앙 정렬을 위한 새로운 구조 - 특별 레이아웃과 동일한 y position 적용
+            <div className="flex-grow flex flex-col justify-center w-full min-h-[400px] lg:min-h-[500px] mt-0 sm:mt-0 md:-mt-8 lg:-mt-24">
               {/* Main Title */}
               {typeof mainTitle === 'string' ? (
                 <h1 className={`
