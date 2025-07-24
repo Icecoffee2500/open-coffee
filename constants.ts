@@ -5,59 +5,59 @@ export const APP_TITLE = "오픈커피 로스터스";
 export const INITIAL_RECOMMENDATION_RULES: RecommendationRule[] = [
   {
     id: 'ml-ff-seasonal', roastLevel: RoastLevel.MediumLight, flavor1: FlavorProfile1.FloralPlusFruit, flavor2: FlavorProfile2.Seasonal,
-    result: "SEASON", name: "피서", ratio: "10", note: "플로럴, 피치, Tropical, 캔디", weight100g: "12,500"
+    result: "SEASON", name: "피서: Vacance", ratio: "10", note: "플로럴, 복숭아, 열대과일, 캔디", weight100g: "12,500", blending: "Ethiopia + Colobmia"
   },
   {
     id: 'ml-ff-balanced', roastLevel: RoastLevel.MediumLight, flavor1: FlavorProfile1.FloralPlusFruit, flavor2: FlavorProfile2.Balanced,
-    result: "Baekhyeon", name: "백현", ratio: "10", note: "화사하고 섬세한 신미가 일품", weight100g: "8,800"
+    result: "Baekhyeon", name: "Baekhyeon", ratio: "10", note: "화사하고 섬세한 신미", weight100g: "8,800", blending: "Ethiopia 1 + Ethiopia 2"
   },
   {
     id: 'ml-floral-whiteflower', roastLevel: RoastLevel.MediumLight, flavor1: FlavorProfile1.Floral, flavor2: FlavorProfile2.WhiteFlower,
-    result: "Baekhyeon + Peru", name: "LIME GREEN", ratio: "6:4", note: "청사과향,\n화이트와인 맛에 플로럴을 덧 입힘", weight100g: "8,700"
+    result: "Baekhyeon + Peru", name: "Lime Green", ratio: "6:4", note: "청사과, 화이트와인, 플로럴", weight100g: "8,700", blending: "Ethiopia + Peru"
   },
   {
     id: 'ml-floral-pinkyflower', roastLevel: RoastLevel.MediumLight, flavor1: FlavorProfile1.Floral, flavor2: FlavorProfile2.PinkyFlower,
-    result: "SEASON + B.H + Peru", name: "Apple Blossom", ratio: "1:5:4", note: "체리,적포도, 장미, 밀키한 바디", weight100g: "9,000"
+    result: "SEASON + B.H + Peru", name: "Apple Blossom", ratio: "1:5:4", note: "체리, 적포도, 장미, 밀키 바디", weight100g: "9,000", blending: "Ethiopia + Colombia + Peru"
   },
   {
     id: 'ml-fruits-berry', roastLevel: RoastLevel.MediumLight, flavor1: FlavorProfile1.Fruits, flavor2: FlavorProfile2.Berry,
-    result: "B.H + Ethiopia", name: "Raspberry", ratio: "6:4", note: "사루비아의 허니함에 뒤따르는\n허브민트향 라즈베리의 달콤함까지", weight100g: "8,600"
+    result: "B.H + Ethiopia", name: "Raspberry", ratio: "6:4", note: "사루비아의 허니, 허브민트, 라즈베리", weight100g: "8,600", blending: "Ethiopia 1 + Ethiopia 2 + Ethiopia 3"
   },
   {
     id: 'ml-fruits-peach', roastLevel: RoastLevel.MediumLight, flavor1: FlavorProfile1.Fruits, flavor2: FlavorProfile2.Peach,
-    result: "B.H + Costarica", name: "Yellow Peach", ratio: "4:6", note: "Peach, Asian Pear, 말릭산미, 바닐라, 팔각형의 실키바디", weight100g: "8,500"
+    result: "B.H + Costarica", name: "Yellow Peach", ratio: "4:6", note: "복숭아, 배, 말릭 산미, 바닐라, 실키바디", weight100g: "8,500", blending: "Ethiopia + Costarica"
   },
   {
     id: 'm-floral-whiteflower', roastLevel: RoastLevel.Medium, flavor1: FlavorProfile1.Floral, flavor2: FlavorProfile2.WhiteFlower,
-    result: "Peru", name: "Peru El Lemon", ratio: "10", note: "데이지 꽃향, 청사과, 캐러멜", weight100g: "8,500"
+    result: "Peru", name: "Peru El Lemon", ratio: "10", note: "데이지 꽃, 청사과, 캐러멜", weight100g: "8,500", blending: "Peru"
   },
   {
     id: 'm-floral-pinkyflower', roastLevel: RoastLevel.Medium, flavor1: FlavorProfile1.Floral, flavor2: FlavorProfile2.PinkyFlower,
-    result: "B.H + Ethiopia", name: "White Pansy", ratio: "4:6", note: "흰 팬지, 열대과일, 풍부한 산미", weight100g: "8,600"
+    result: "B.H + Ethiopia", name: "White Pansy", ratio: "4:6", note: "흰 팬지 꽃, 열대과일, 풍부한 산미", weight100g: "8,600", blending: "Ethiopia 1 + Ethiopia 2 + Ethiopia 3"
   },
   {
     id: 'm-ff-berry', roastLevel: RoastLevel.Medium, flavor1: FlavorProfile1.FloralPlusFruit, flavor2: FlavorProfile2.Berry,
-    result: "Ethiopia", name: "Ethiopia Guji Uraga", ratio: "10", note: "라임, 라즈베리의 맛과 베리류의 향취", weight100g: "8,300"
+    result: "Ethiopia", name: "Ethiopia Guji Uraga", ratio: "10", note: "라임, 라즈베리, 베리류", weight100g: "8,300", blending: "Ethiopia"
   },
   {
     id: 'm-ff-driedfruits', roastLevel: RoastLevel.Medium, flavor1: FlavorProfile1.FloralPlusFruit, flavor2: FlavorProfile2.DriedFruits,
-    result: "Costarica", name: "Costarica Girasoles", ratio: "10", note: "말린과일, 스카치캔디, 탠저린, 밀크쵸콜릿, Nuty", weight100g: "8,500"
+    result: "Costarica", name: "Costarica Girasoles", ratio: "10", note: "말린과일, 스카치캔디, 탠저린, 밀크쵸콜릿, 너티", weight100g: "8,500", blending: "Costarica"
   },
   {
     id: 'city-nut-Almond', roastLevel: RoastLevel.City, flavor1: FlavorProfile1.Nut, flavor2: FlavorProfile2.Almond,
-    result: "Open + Costarica", name: "COTTAGE", ratio: "6:4", note: "아몬드와 헤이즐넛의 고소한 단맛", weight100g: "7,200"
+    result: "Open + Costarica", name: "Cottage", ratio: "6:4", note: "아몬드, 헤이즐넛, 고소한 단맛", weight100g: "7,200", blending: "Ethiopia + Brazil + Kenya Guatemala + Costarica"
   },
   {
     id: 'city-nut-BrazielNut', roastLevel: RoastLevel.City, flavor1: FlavorProfile1.Nut, flavor2: FlavorProfile2.BrazielNut,
-    result: "B.H + Costarica", name: "SUNSET", ratio: "4:6", note: "헤이즐넛향의\n고급스런 분위기의 실키 바디", weight100g: "8,600"
+    result: "B.H + Costarica", name: "Sunset", ratio: "4:6", note: "헤이즐넛, 실키 바디", weight100g: "8,600", blending: "Ethiopia + Costarica"
   },
   {
     id: 'city-choco-milk', roastLevel: RoastLevel.City, flavor1: FlavorProfile1.Choco, flavor2: FlavorProfile2.Milk,
-    result: "Open + B.H", name: "CITRUS", ratio: "5:5", note: "귤피차의 약한 산미,\n카카오의 쌉사름한 단맛", weight100g: "7,500"
+    result: "Open + B.H", name: "Citrus", ratio: "5:5", note: "귤피차의 약한 산미, 카카오의 쌉사름한 단맛", weight100g: "7,500", blending: "Ethiopia 1, 2 + Brazil Kenya + Guatemala"
   },
   {
     id: 'city-choco-dark', roastLevel: RoastLevel.City, flavor1: FlavorProfile1.Choco, flavor2: FlavorProfile2.Dark,
-    result: "Open", name: "OPEN", ratio: "10", note: "고소하고 우아한 한잔, 중강배전", weight100g: "6,300"
+    result: "Open", name: "Open", ratio: "10", note: "고소하고 우아한 맛", weight100g: "6,300", blending: "Ethiopia + Brazil Kenya + Guatemala"
   },
 ];
 

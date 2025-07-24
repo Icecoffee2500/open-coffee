@@ -42,6 +42,7 @@ export interface RecommendationRule {
   ratio: string;
   note: string;
   weight100g: string;
+  blending: string;
 }
 
 export type Step1ButtonOptionsType = RoastLevel[];
