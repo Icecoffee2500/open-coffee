@@ -41,6 +41,10 @@ const AdminPage: React.FC<AdminPageProps> = ({ rules, setRules, step1Options, st
       ? (editingRuleData.note.trim() || originalRule?.note || "")
       : originalRule?.note || "";
 
+    const processedBlending = editingRuleData.blending !== undefined
+      ? (editingRuleData.blending.trim() || originalRule?.blending || "")
+      : originalRule?.blending || "";
+
     setRules(prevRules =>
       prevRules.map(rule => {
         if (rule.id === id) {
@@ -50,6 +54,7 @@ const AdminPage: React.FC<AdminPageProps> = ({ rules, setRules, step1Options, st
             result: processedResult,
             name: processedName, 
             note: processedNote,
+            blending: processedBlending,
           } as RecommendationRule;
         }
         return rule;
@@ -116,8 +121,8 @@ const AdminPage: React.FC<AdminPageProps> = ({ rules, setRules, step1Options, st
           <p className="text-xs sm:text-sm text-gray-600 mb-4 sm:mb-6">
             각 조합에 대한 추천 커피 정보를 수정할 수 있습니다. 규칙 ID는 변경되지 않습니다.
           </p>
-          <div className="overflow-x-auto border border-gray-200 sm:border-gray-300"> 
-            <table className="min-w-full divide-y divide-gray-200 table-fixed" style={{ minWidth: '1800px' }}>
+          <div className="overflow-x-auto border border-gray-200 sm:border-gray-300">
+            <table className="min-w-full divide-y divide-gray-200 table-fixed" style={{ minWidth: '2000px' }}>
               <thead className="bg-gray-50 sm:bg-gray-100">
                 <tr>
                   <th scope="col" className="px-3 py-3 sm:px-4 sm:py-4 text-left text-xs font-normal sm:font-medium text-gray-500 uppercase tracking-wider w-[160px] md:w-[180px]">로스팅</th>
@@ -125,6 +130,7 @@ const AdminPage: React.FC<AdminPageProps> = ({ rules, setRules, step1Options, st
                   <th scope="col" className="px-3 py-3 sm:px-4 sm:py-4 text-left text-xs font-normal sm:font-medium text-gray-500 uppercase tracking-wider w-[160px] md:w-[180px]">향미 2</th>
                   <th scope="col" className="px-3 py-3 sm:px-4 sm:py-4 text-left text-xs font-normal sm:font-medium text-gray-500 uppercase tracking-wider w-[200px] md:w-[220px]">결과</th>
                   <th scope="col" className="px-3 py-3 sm:px-4 sm:py-4 text-left text-xs font-normal sm:font-medium text-gray-500 uppercase tracking-wider w-[200px] md:w-[220px]">이름</th>
+                  <th scope="col" className="px-3 py-3 sm:px-4 sm:py-4 text-left text-xs font-normal sm:font-medium text-gray-500 uppercase tracking-wider w-[200px] md:w-[220px]">블렌딩</th>
                   <th scope="col" className="px-3 py-3 sm:px-4 sm:py-4 text-left text-xs font-normal sm:font-medium text-gray-500 uppercase tracking-wider w-[120px]">비율</th>
                   <th scope="col" className="px-3 py-3 sm:px-4 sm:py-4 text-left text-xs font-normal sm:font-medium text-gray-500 uppercase tracking-wider w-[400px] sm:w-[450px] md:w-[500px]">노트</th>
                   <th scope="col" className="px-3 py-3 sm:px-4 sm:py-4 text-left text-xs font-normal sm:font-medium text-gray-500 uppercase tracking-wider w-[140px]">100g가격</th>
@@ -196,6 +202,15 @@ const AdminPage: React.FC<AdminPageProps> = ({ rules, setRules, step1Options, st
                         <td className="px-3 py-3 sm:px-4 sm:py-4 text-xs sm:text-sm">
                           <input
                             type="text"
+                            value={editingRuleData.blending || ''}
+                            onChange={(e) => handleInputChange('blending', e.target.value)}
+                            className="w-full p-2 text-xs sm:text-sm border border-gray-300 rounded-md sm:rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition shadow-sm"
+                            placeholder="블렌딩"
+                          />
+                        </td>
+                        <td className="px-3 py-3 sm:px-4 sm:py-4 text-xs sm:text-sm">
+                          <input
+                            type="text"
                             value={editingRuleData.ratio || ''}
                             onChange={(e) => handleInputChange('ratio', e.target.value)}
                             className="w-full p-2 text-xs sm:text-sm border border-gray-300 rounded-md sm:rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition shadow-sm"
@@ -228,6 +243,7 @@ const AdminPage: React.FC<AdminPageProps> = ({ rules, setRules, step1Options, st
                         <td className="px-3 py-3 sm:px-4 sm:py-4 text-xs sm:text-sm text-gray-500 sm:text-gray-700 break-words">{rule.flavor2 || '해당 없음'}</td>
                         <td className="px-3 py-3 sm:px-4 sm:py-4 text-xs sm:text-sm text-gray-600 sm:text-gray-700 break-words">{rule.result}</td>
                         <td className="px-3 py-3 sm:px-4 sm:py-4 text-xs sm:text-sm text-gray-600 sm:text-gray-700 break-words">{rule.name}</td>
+                        <td className="px-3 py-3 sm:px-4 sm:py-4 text-xs sm:text-sm text-gray-600 sm:text-gray-700 break-words">{rule.blending}</td>
                         <td className="px-3 py-3 sm:px-4 sm:py-4 text-xs sm:text-sm text-gray-600 sm:text-gray-700 break-words">{rule.ratio}</td>
                         <td className="px-3 py-3 sm:px-4 sm:py-4 text-xs sm:text-sm text-gray-600 sm:text-gray-700 whitespace-pre-line break-words">{rule.note}</td>
                         <td className="px-3 py-3 sm:px-4 sm:py-4 text-xs sm:text-sm text-gray-600 sm:text-gray-700 break-words">{rule.weight100g}</td>

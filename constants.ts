@@ -48,7 +48,7 @@ export const INITIAL_RECOMMENDATION_RULES: RecommendationRule[] = [
     result: "Open + Costarica", name: "Cottage", ratio: "6:4", note: "아몬드, 헤이즐넛, 고소한 단맛", weight100g: "7,200", blending: "Ethiopia + Brazil + Kenya Guatemala + Costarica"
   },
   {
-    id: 'city-nut-BrazielNut', roastLevel: RoastLevel.City, flavor1: FlavorProfile1.Nut, flavor2: FlavorProfile2.BrazielNut,
+    id: 'city-nut-BrazilNut', roastLevel: RoastLevel.City, flavor1: FlavorProfile1.Nut, flavor2: FlavorProfile2.BrazilNut,
     result: "B.H + Costarica", name: "Sunset", ratio: "4:6", note: "헤이즐넛, 실키 바디", weight100g: "8,600", blending: "Ethiopia + Costarica"
   },
   {
@@ -91,7 +91,7 @@ export const STEP3_OPTIONS_BY_COMBINATION: Record<string, FlavorProfile2[]> = {
   [`${RoastLevel.Medium}-${FlavorProfile1.FloralPlusFruit}`]: [FlavorProfile2.Berry, FlavorProfile2.DriedFruits],
   
   // City + Nut
-  [`${RoastLevel.City}-${FlavorProfile1.Nut}`]: [FlavorProfile2.Almond, FlavorProfile2.BrazielNut],
+  [`${RoastLevel.City}-${FlavorProfile1.Nut}`]: [FlavorProfile2.Almond, FlavorProfile2.BrazilNut],
   
   // City + Choco
   [`${RoastLevel.City}-${FlavorProfile1.Choco}`]: [FlavorProfile2.Milk, FlavorProfile2.Dark],
@@ -143,7 +143,7 @@ export const FLAVOR2_DETAILS: Record<FlavorProfile2, CircleDetail> = {
   [FlavorProfile2.Peach]: { text: "Peach", color: "bg-[#B07E5E]" },
   [FlavorProfile2.DriedFruits]: { text: "Dried\nFruits", color: "bg-[#B07E5E]" },
   [FlavorProfile2.Almond]: { text: "Almond", color: "bg-[#5A3A29]" },
-  [FlavorProfile2.BrazielNut]: { text: "Braziel\nNut", color: "bg-[#5A3A29]" },
+  [FlavorProfile2.BrazilNut]: { text: "Brazil\nNut", color: "bg-[#5A3A29]" },
   [FlavorProfile2.Milk]: { text: "Milk", color: "bg-[#5A3A29]" },
   [FlavorProfile2.Dark]: { text: "Dark", color: "bg-[#5A3A29]" },
 };
